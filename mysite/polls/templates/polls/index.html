@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>My test polls index page</title>
+  </head>
+
+    <body>
+        <p>You are in django_local_library. You're at the polls index. 7491a32c 26e92deb</p>
+        {% if latest_question_list %}
+            <ul>
+            {% for question in latest_question_list %}
+                <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    </body>
+
+</html>
