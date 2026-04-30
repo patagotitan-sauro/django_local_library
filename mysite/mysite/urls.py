@@ -28,6 +28,7 @@ SITE_ROOT = os.path.join(BASE_DIR, 'site')
 
 
 urlpatterns = [
+    path("catalog", include("catalog.urls")),
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
     re_path(r'^site/(?P<path>.*)$', serve,
