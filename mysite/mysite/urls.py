@@ -28,9 +28,8 @@ SITE_ROOT = os.path.join(BASE_DIR, 'site')
 
 
 urlpatterns = [
-    
-    path("catalog", include("catalog.urls")), # app catalog
-    path("polls/", include("polls.urls")), # app polls
+    path("catalog", include("catalog.urls")),
+    path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
     re_path(r'^site/(?P<path>.*)$', serve,
         {'document_root': SITE_ROOT, 'show_indexes': True},
@@ -38,7 +37,6 @@ urlpatterns = [
         ),
 ]
 
-#path("finance", include("finance.urls")), # app finance
 #path("", RedirectView.as_view(url="/polls/")),   # <--- root redirect
 '''
 urlpatterns = [

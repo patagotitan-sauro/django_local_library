@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "polls.apps.PollsConfig",
     "catalog.apps.CatalogConfig",
 ]
-#"finance.apps.FinanceConfig",
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
