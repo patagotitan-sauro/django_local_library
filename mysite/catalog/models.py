@@ -1,8 +1,8 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse # Used in get_absolute_url() to get URL for specified ID
 
-from django.db.models.functions import Lower
-from django.db.models import UniqueConstraint
+from django.db.models.functions import Lower # Returns lower cased value of field
+from django.db.models import UniqueConstraint # Constrains fields to unique values
 
 
 # Create your models here.
@@ -12,6 +12,8 @@ class Book(models.Model):
     #Fields
     title = models.CharField(max_length=200, help_text="Enter book title")
     author = models.ForeignKey('Author', on_delete=models.RESTRICT, null= True)
+    # Foreign Key used because book can only have one author, but authors can have multiple books.
+    # Author as a string rather than object because it hasn't been declared yet in file.
     summary = models.TextField(max_length=1000, help_text="""Enter a brief
     description of the book""")
     isbn = models.CharField('ISBN',max_length=13, unique=True, help_text="""
@@ -23,7 +25,7 @@ class Book(models.Model):
 
     #Metadata
     class Meta:
-        ordering = ["title", "author"]
+        ordering = ["title", "-author"]
         #verbose_name = "BookTitle"
 
     #Methods
@@ -67,6 +69,7 @@ class Genre(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a particular genre instance."""
         return reverse('genre-detail', args=[str(self.id)])
+    
     class Meta:
         constraints = [
         UniqueConstraint(
